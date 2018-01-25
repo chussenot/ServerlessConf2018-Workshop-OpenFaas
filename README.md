@@ -33,4 +33,6 @@ WIFI_SECONDARY_SSID="ssid"
 WIFI_SECONDARY_PASSWORD="password"
 ```
 
-Insert your sdcard and run `make flash`
+* Insert your sdcard
+* Create your [partitions](https://elinux.org/RPi_Easy_SD_Card_Setup)
+* Run `make flash`
