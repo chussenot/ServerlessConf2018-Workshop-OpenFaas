@@ -24,8 +24,6 @@ fi
 
 raspbian_image=`ls **/*.img`
 
-exit
-
 echo "Copy image ${raspbian_image} to sdcard"
 sudo dd if=${raspbian_image} of=${SD_CARD_DEVICE} bs=4M conv=fsync
 
