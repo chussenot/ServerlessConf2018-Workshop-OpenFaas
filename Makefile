@@ -17,5 +17,8 @@ endif
 flash: ## Flash your micro-sd cards
 	./flash
 
-.PHONY: help install flash
+configure: ## Configure a raspi on the network
+	./configure
+
+.PHONY: help install flash configure
 

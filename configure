@@ -1,0 +1,4 @@
+pushd ansible
+  ansible-playbook -i hosts configure.yml
+popd
+
