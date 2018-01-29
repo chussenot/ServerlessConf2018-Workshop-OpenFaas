@@ -36,6 +36,9 @@ WIFI_SECONDARY_PASSWORD="password"
 * Insert your sdcard
 * Create your [partitions](https://elinux.org/RPi_Easy_SD_Card_Setup)
 * Run `make flash`
+* List your partitions with tool like `gparted`and find your boot and root
+partitions
+* Run `make init`, to configure SSH access and Wifi.
 
 Resources
 ---------
