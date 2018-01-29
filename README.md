@@ -45,3 +45,5 @@ Resources
 
 * [How to flash an sd card for raspberry-pi](https://computers.tutsplus.com/articles/how-to-flash-an-sd-card-for-raspberry-pi--mac-53600)
 * [Install Docker on Raspian](https://docs.docker.com/install/linux/docker-ce/debian/)
+* [get.docker.com](https://get.docker.com/)
+* [Memory issue](https://docs.docker.com/engine/admin/resource_constraints/#memory)
