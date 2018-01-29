@@ -2,37 +2,25 @@
 
 set -e
 
-echo "Add your SD_CARD_DEVICE"
-read SD_CARD_DEVICE
+# echo "Add your SD_CARD_DEVICE"
+# read SD_CARD_DEVICE
+#
+# echo "Add your SD_CARD_BOOT_PARTITION"
+# read SD_CARD_BOOT_PARTITION
+#
+# echo "Add your SD_CARD_ROOT_PARTITION"
+# read SD_CARD_ROOT_PARTITION
+#
+# echo "Add an HOSTNANE"
+# read HOSTNAME
 
-echo "Add your SD_CARD_BOOT_PARTITION"
-read SD_CARD_BOOT_PARTITION
-
-echo "Add your SD_CARD_ROOT_PARTITION"
-read SD_CARD_ROOT_PARTITION
-
-echo "Add an HOSTNANE"
-read HOSTNAME
-
-mkdir -p build
-
-if [ ! -f build/raspbian.zip ]
-then
-    wget -O build/raspbian.zip https://downloads.raspberrypi.org/raspbian_lite_latest
-    unzip build/raspbian.zip
-fi
-
-raspbian_image=`ls **/*.img`
-
-echo "Copy image ${raspbian_image} to sdcard"
-sudo dd if=${raspbian_image} of=${SD_CARD_DEVICE} bs=4M conv=fsync
-
-echo "Force disk sync"
-sync
+SD_CARD_BOOT_PARTITION=/dev/disk2s1
+SD_CARD_ROOT_PARTITION=/dev/disk2s2
+HOSTNAME=openfaas
 
 echo "Mount boot sdcard"
 mkdir -p build/mnt
-sudo mount ${SD_CARD_BOOT_PARTITION} ./build/mnt
+sudo mount -t fs ${SD_CARD_BOOT_PARTITION} ./build/mnt
 
 echo "Force ssh to start at first boot"
 sudo touch build/mnt/ssh

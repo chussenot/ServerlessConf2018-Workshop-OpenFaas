@@ -36,3 +36,8 @@ WIFI_SECONDARY_PASSWORD="password"
 * Insert your sdcard
 * Create your [partitions](https://elinux.org/RPi_Easy_SD_Card_Setup)
 * Run `make flash`
+
+Resources
+---------
+
+* [How to flash an sd card for raspberry-pi](https://computers.tutsplus.com/articles/how-to-flash-an-sd-card-for-raspberry-pi--mac-53600)
