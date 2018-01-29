@@ -13,7 +13,7 @@ read HOSTNAME
 
 echo "Mount boot sdcard"
 mkdir -p build/mnt
-sudo mount -t fs ${SD_CARD_BOOT_PARTITION} ./build/mnt
+sudo mount ${SD_CARD_BOOT_PARTITION} ./build/mnt
 
 echo "Force ssh to start at first boot"
 sudo touch build/mnt/ssh
@@ -49,4 +49,4 @@ echo "Force disk sync"
 sync
 
 echo "Bootstrap finished, plug sdcard on raspberrypi and connect with command:"
-echo " ssh pi@${HOSTNAME}.local"
+echo " ssh pi@${HOSTNAME}"
