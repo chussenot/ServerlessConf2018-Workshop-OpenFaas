@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+
+set -e
+
+echo "Add your SD_CARD_BOOT_PARTITION"
+read SD_CARD_BOOT_PARTITION
+
+echo "Add your SD_CARD_ROOT_PARTITION"
+read SD_CARD_ROOT_PARTITION
+
+echo "Add an HOSTNANE"
+read HOSTNAME
+
+echo "Mount boot sdcard"
+mkdir -p build/mnt
+sudo mount -t fs ${SD_CARD_BOOT_PARTITION} ./build/mnt
+
+echo "Force ssh to start at first boot"
+sudo touch build/mnt/ssh
+
+echo "Umount boot partition"
+sudo umount build/mnt
+
+echo "Mount root sdcard"
+sudo mount ${SD_CARD_ROOT_PARTITION} ./build/mnt
+
+echo "Set hostname"
+echo ${HOSTNAME} | sudo tee build/mnt/etc/hostname > /dev/null
+echo sudo sed -i "s/raspberrypi/$HOSTNAME/g" build/mnt/etc/hosts
+
+echo "Disable default password for 'pi' use"
+sudo sed -i -E "s/(pi:)[^:]*(:.*)/\1*\2/" build/mnt/etc/shadow*
+
+echo "Copy authorized keys"
+sudo mkdir -p build/mnt/home/pi/.ssh/
+sudo cp ./authorized_keys build/mnt/home/pi/.ssh/
+sudo chmod 600 build/mnt/home/pi/.ssh/authorized_keys
+sudo chown -R 1000:1000 build/mnt/home/pi
+
+echo "Copy wifi configuration"
+source .env
+eval "echo \"$(cat wpa_supplicant.conf)\"" | sudo tee build/mnt/etc/wpa_supplicant/wpa_supplicant.conf > /dev/null
+sudo chmod 600 build/mnt/etc/wpa_supplicant/wpa_supplicant.conf
+
+echo "Umount sdcard"
+sudo umount ./build/mnt
+
+echo "Force disk sync"
+sync
+
+echo "Bootstrap finished, plug sdcard on raspberrypi and connect with command:"
+echo " ssh pi@${HOSTNAME}.local"
