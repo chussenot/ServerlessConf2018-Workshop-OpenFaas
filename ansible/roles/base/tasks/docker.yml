@@ -1,0 +1,6 @@
+---
+
+# Install docker with the convenience script.
+# https://docs.docker.com/install/linux/docker-ce/debian/#install-using-the-convenience-script
+- name: Install Docker
+  command: curl -sSL get.docker.com | sh && \ sudo usermod pi -aG docker
