@@ -1,4 +1,28 @@
+---
+
 - name: Simple Copy
   template:
     src: ready
     dest: ./ready
+
+- name: Set timezone
+  timezone:
+    name: Europe/Paris
+
+- name: Install basic tools
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  with_items:
+    - vim
+    - git
+    - tig
+    - wget
+    - curl
+    - jq
+    - python3
+    - python3-pip
+    - python-apt
+
+- include_tasks: fs.yml
