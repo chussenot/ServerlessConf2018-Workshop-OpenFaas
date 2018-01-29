@@ -3,7 +3,7 @@
 _Learn how to build a Kubernetes Cluster with Raspberry Pis as servers and how to run OpenFaas though some practical use cases._
 
 This content is designed for audience without any prior Raspberry Pi, Docker, Kubernetes and OpenFaas knowledge. 
-It starts from the Raspberry Pis' settings with OpenFaas and goes to few real life scenarious.
+It starts from the Raspberry Pis' settings with OpenFaas and goes to few real life scenarious.  
 Thanks to Alex Ellis and to all contributors in the OpenFaas Community for their amazing work.
 
 **Disclaimer:**  
@@ -13,7 +13,7 @@ You can subscribe to Alex Ellis' blog to see the latest updates of OpenFaas: htt
 
 ## Objectives
 
-Building a cluster with Raspberry Pis is an affordable way to build a supercomputer or to simulate a mesh network or a scalable infrastructure.
+Building a cluster with Raspberry Pis is an affordable way to build a supercomputer or to simulate a mesh network or a scalable infrastructure.  
 After completing this workshop, you should be able to:
 * Create your own serverless Lab with a Raspberry Pi Cluster, Docker, Kubernetes and OpenFaas,
 * Understand the fundamentals of Faas,
