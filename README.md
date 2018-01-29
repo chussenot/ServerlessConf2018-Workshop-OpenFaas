@@ -6,7 +6,7 @@ This content is designed for audience without any prior Raspberry Pi, Docker, Ku
 It starts from the Raspberry Pis' settings with OpenFaas and goes to few real life scenarious.
 Thanks to Alex Ellis and to all contributors in the OpenFaas Community for their amazing work.
 
-**_Disclaimer:_**
+_**Disclaimer:**_
 _We are working in a fast-changing environment so this Lab may need to be updated with each softwares' new version.
 _You can subscribe to Alex Ellis' blog to see the latest updates of OpenFaas: https://www.alexellis.io_
 
