@@ -67,5 +67,10 @@ Reboot the RPi then check the IP address
 ifconfig wlan0
 ```
 
-
+6 - Update your distrib
+```
+sudo apt-get update
+```
+  
+  
 -> Go to [Next Chapter](https://github.com/estelle-a/ServerlessConf2018-Workshop-OpenFaas/blob/master/02-Setup-network.md)
