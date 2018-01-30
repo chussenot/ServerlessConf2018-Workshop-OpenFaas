@@ -40,10 +40,10 @@ cgroup_enable=cpuset cgroup_enable=memory
 
 12 - Add repo lists & install kubeadm
 ```
-$ curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - && \
-  echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list && \
-  sudo apt-get update -q && \
-  sudo apt-get install -qy kubeadm
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - && \
+echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list && \
+sudo apt-get update -q && \
+sudo apt-get install -qy kubeadm
 ```
   
   
@@ -51,7 +51,7 @@ $ curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key a
 
 13 - Generate a token
 ```
-$ sudo kubeadm init --token-ttl=0
+sudo kubeadm init --token-ttl=0
 ```
 
 We pass in `--token-ttl=0` so that the token never expires - do not use this setting in production. The UX for `kubeadm` means it's currently very hard to get a join token later on after the initial token has expired. 
@@ -62,28 +62,26 @@ _Note: This step will take a long time, even up to 15 minutes._
 
 After the `init` is complete run the snippet given to you on the command-line:  
 ```
-  mkdir -p $HOME/.kube
-  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 
 This step takes the key generated for cluster administration and makes it available in a default location for use with `kubectl`.
 
 14 - Save your join-token
 
-Your join token is valid for 24 hours, so save it into a text file. Here's an example of mine:
-```
-$ kubeadm join --token 9e700f.7dc97f5e3a45c9e5 192.168.0.27:6443 --discovery-token-ca-cert-hash sha256:95cbb9ee5536aa61ec0239d6edd8598af68758308d0a0425848ae1af28859bea
-```
+Your join token is valid for 24 hours, so save it into a text file. Here's an example:
+![image](https://github.com/estelle-a/ServerlessConf2018-Workshop-OpenFaas/blob/master/images/03-001.jpg) 
 
 15 - Setup networking
 Install Weave network driver
 ```
-$ kubectl apply -f https://git.io/weave-kube-1.6
+kubectl apply -f https://git.io/weave-kube-1.6
 ```
 If you run into an issue use this script instead:
 ```
-$ kubectl apply -f \
+kubectl apply -f \
  "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
 ```
   
@@ -94,7 +92,7 @@ $ kubectl apply -f \
 ```
 kubectl get pods --namespace=kube-system
 ```
-![image](https://github.com/estelle-a/ServerlessConf2018-Workshop-OpenFaas/blob/master/images/03-001.jpg)  
+![image](https://github.com/estelle-a/ServerlessConf2018-Workshop-OpenFaas/blob/master/images/03-002.jpg)  
   
   
 ## Configure worker Nodes
@@ -102,14 +100,14 @@ kubectl get pods --namespace=kube-system
 17 - Join the cluster
 Replace the token / IP for the output you got from the master node:
 ```
-$ sudo kubeadm join --token 1fd0d8.67e7083ed7ec08f3 192.168.0.27:6443
+sudo kubeadm join --token 1fd0d8.67e7083ed7ec08f3 192.168.0.27:6443
 ```
 
 You can now run this on the master:
 ```
-$ kubectl get nodes
+kubectl get nodes
 ```
-![image](https://github.com/estelle-a/ServerlessConf2018-Workshop-OpenFaas/blob/master/images/03-002.jpg)  
+![image](https://github.com/estelle-a/ServerlessConf2018-Workshop-OpenFaas/blob/master/images/03-003.jpg)  
 
 
 ## Deploy a container
@@ -154,8 +152,8 @@ spec:
 
 19 - Deploy and test:
 ```
-$ kubectl create -f function.yml
-$ curl -4 http://localhost:31118 -d "# test"
+kubectl create -f function.yml
+curl -4 http://localhost:31118 -d "# test"
 <p><h1>test</h1></p>
 ```
 From a remote machine such as your laptop use the IP address of your Kubernetes master and try the same again.
@@ -184,7 +182,7 @@ subjects:
 
 This is the development/alternative dashboard which has TLS disabled and is easier to use.
 ```
-$ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/alternative/kubernetes-dashboard-arm.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/alternative/kubernetes-dashboard-arm.yaml
 ```
 
 You can then find the IP and port via `kubectl get svc -n kube-system`. To access this from your laptop you will need to use `kubectl proxy` and navigate to `http://localhost:8001/` on the master, or tunnel to this address with `ssh`.
@@ -194,7 +192,7 @@ You can then find the IP and port via `kubectl get svc -n kube-system`. To acces
 
 Now on the Kubernetes master remove the test deployment:
 ```
-$ kubectl delete -f function.yml
+kubectl delete -f function.yml
 ```
 
   
