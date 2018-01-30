@@ -17,9 +17,9 @@ Use the _raspi-config_ utility to change the hostname to k8s-master-1 or similar
 
 7 - Set a static IP address
 It's not fun when your cluste breaks because the IP of your master changed. Let's fix that problem ahead of time:
-...
+'''
 cat >> /etc/dhcpcd.conf
-...
+'''
 
 Paste this block:
 ...
