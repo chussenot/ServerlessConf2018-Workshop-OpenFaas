@@ -1,4 +1,4 @@
-#Chapter 1 - Install the Raspberry Pis
+# Chapter 1 - Install the Raspberry Pis
 
 ## Setup the Raspberry Pi
 
