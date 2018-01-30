@@ -26,6 +26,7 @@ In order to connect to your Raspberry Pi from your computer using SSH (or VNC), 
 The easiest way is when you have a display connected:  
 ...
 hostname -l
+...
 
 Without any display,
 
@@ -51,4 +52,15 @@ Hit Control + D.
 Change 100 for 101, 102, 103 etc.
 
 You may also need to make a reservation on your router's DHCP table so these addresses don't get given out to other devices on your network.
+
+
+## Install Docker
+
+8 - This installs 17.12 or newer.
+```
+$ curl -sSL get.docker.com | sh && \
+sudo usermod pi -aG docker
+```
+
+
 
