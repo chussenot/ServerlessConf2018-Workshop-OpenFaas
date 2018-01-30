@@ -4,4 +4,4 @@
 
 1 - Download Raspbian Stretch Lite (https://www.raspberrypi.org/downloads/raspbian/)
 
-![images/01-001.jpg]
+![https://github.com/estelle-a/ServerlessConf2018-Workshop-OpenFaas/blob/master/images/01-001.jpg]
