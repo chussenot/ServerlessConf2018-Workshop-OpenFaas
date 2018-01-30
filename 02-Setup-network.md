@@ -13,7 +13,7 @@ hostname -l
 Without any display,
 
 6 - Change the hostname
-Use the 'raspi-config' utility to change the hostname to k8s-master-1 or similar and then reboot.
+Use the _raspi-config_ utility to change the hostname to k8s-master-1 or similar and then reboot.
 
 7 - Set a static IP address
 It's not fun when your cluste breaks because the IP of your master changed. Let's fix that problem ahead of time:
