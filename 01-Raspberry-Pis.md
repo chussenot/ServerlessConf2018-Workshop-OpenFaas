@@ -21,7 +21,7 @@ With a display
 ```
 sudo raspi-config
 ```
-'Interfacing Options'\'P2 SSH'  
+Interfacing Options \ P2 SSH
 ![image](https://github.com/estelle-a/ServerlessConf2018-Workshop-OpenFaas/blob/master/images/01-005.jpg)
 
 4 - Download and install [Putty](https://www.putty.org/).
