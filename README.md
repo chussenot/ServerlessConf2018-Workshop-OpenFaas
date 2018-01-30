@@ -33,7 +33,7 @@ After completing this workshop, you should be able to:
 
 ## Overview of this workshop
 
-This workshop contains XX chapters, the first XX chapters will cover the material settings and the last ones will present some samples so you can understand different ways to interact with your local Serverless Lab or with a public cloud.
+This workshop contains XX chapters, the first 5 chapters will cover the material settings and the last ones will present some samples so you can understand different ways to interact with your local Serverless Lab or with a public cloud.
 
 **Detailed content of the workshop**
 1. [Chapter 1 - Install the Raspberry Pis](https://github.com/estelle-a/ServerlessConf2018-Workshop-OpenFaas/blob/master/01-Raspberry-Pis.md)
