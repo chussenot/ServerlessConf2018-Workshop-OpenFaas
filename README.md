@@ -37,7 +37,7 @@ This workshop contains XX chapters, the first XX chapters will cover the materia
 
 **Detailed content of the workshop**
 1. Chapter 1 - Install the Raspberry Pis
-2. Chapter 2 - Set up the network
+2. Chapter 2 - Setup the network
 3. Chapter 3 - Install Docker & Kubernetes
 4. Chapter 4 - Install OpenFaas
 5. Chapter 5 - Use case 1:
