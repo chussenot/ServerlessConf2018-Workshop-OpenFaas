@@ -21,7 +21,7 @@ sudo update-rc.d dphys-swapfile remove
 
 This should now show no entries:
 ```
-$ sudo swapon --summary
+sudo swapon --summary
 ```
 
 10 - Change cmdline.txt
