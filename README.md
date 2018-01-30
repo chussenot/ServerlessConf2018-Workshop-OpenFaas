@@ -8,7 +8,7 @@ Thanks to Alex Ellis and to all contributors in the OpenFaas Community for their
 
 **Disclaimer:**  
 We are working in a fast-changing environment so this Lab may need to be updated with each softwares' new version.  
-You can subscribe to Alex Ellis' blog to see the latest updates of OpenFaas: https://www.alexellis.io
+You can subscribe to [Alex Ellis' blog](https://www.alexellis.io) to see the latest updates of OpenFaas.
 
 
 ## Objectives
