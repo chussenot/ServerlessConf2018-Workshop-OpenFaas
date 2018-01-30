@@ -4,4 +4,4 @@
 
 1 - Download Raspbian Stretch Lite (https://www.raspberrypi.org/downloads/raspbian/)
 
-!images/01-001.jpg
+![images/01-001.jpg]
