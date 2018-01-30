@@ -39,19 +39,33 @@ iface wlan0 inet static
 address 192.168.0.150
 netmask 255.255.255.0
 gateway 192.168.0.1
-wpa-ssid "YOUR SSID"
-wpa-psk "YOUR PASSWORD"
+wpa-ssid "SSID NAME"
+wpa-psk "WIFI PASSWORD"
 
 ifdown wlan0
 ifup wlan0
 ```
 Reboot the RPi then check the IP address  
 ```
-Ifconfig
+ifconfig
 ```
 
 _on RPi3_
+```
+sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
+```
+Add at the end of the file  
+```
+network={
+  ssid="SSID NAME"
+  psk="WIFI PASSWORD"
+  key_mgmt=WPA-PSK
+}
+```
+Reboot the RPi then check the IP address  
+```
+ifconfig wlan0
+```
 
-  
-  
+
 -> Go to [Next Chapter](https://github.com/estelle-a/ServerlessConf2018-Workshop-OpenFaas/blob/master/02-Setup-network.md)
