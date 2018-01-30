@@ -17,7 +17,7 @@ Building a cluster with Raspberry Pis is an affordable way to build a supercompu
 After completing this workshop, you should be able to:
 * Create your own serverless Lab with a Raspberry Pi Cluster, Docker, Kubernetes and OpenFaas,
 * Understand the fundamentals of Faas,
-* Learn how to apply these concepts on real world scenarii leveraging the power of Azure Services.
+* Learn how to apply these concepts on real world scenarious leveraging the power of Azure Services.
 
 
 ## Prerequisites
