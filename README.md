@@ -40,6 +40,12 @@ WIFI_SECONDARY_PASSWORD="password"
 partitions
 * Run `make init`, to configure SSH access and Wifi.
 
+ARM32 Images
+------------
+
+* [arm32v7](https://hub.docker.com/u/arm32v7/)
+* [arm32v6](https://hub.docker.com/u/arm32v6/)
+
 Resources
 ---------
 
@@ -47,3 +53,5 @@ Resources
 * [Install Docker on Raspian](https://docs.docker.com/install/linux/docker-ce/debian/)
 * [get.docker.com](https://get.docker.com/)
 * [Memory issue](https://docs.docker.com/engine/admin/resource_constraints/#memory)
+* [5 things on docker-rpi by @alexellis](https://blog.alexellis.io/5-things-docker-rpi/)
+* [resin.io base image](https://hub.docker.com/r/resin/rpi-raspbian/)
