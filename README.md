@@ -36,10 +36,11 @@ After completing this workshop, you should be able to:
 This workshop contains XX chapters, the first XX chapters will cover the material settings and the last ones will present some samples so you can understand different ways to interact with your local Serverless Lab or with a public cloud.
 
 **Detailed content of the workshop**
-1. Chapter 1 - Install the Raspberry Pis
-2. Chapter 2 - Setup the network
-3. Chapter 3 - Install Docker & Kubernetes
-4. Chapter 4 - Install OpenFaas
-5. Chapter 5 - Use case 1:
-6. Chapter 6 - Use case 2:
-7. Chapter 7 - Use case 3:
+1. [Chapter 1 - Install the Raspberry Pis](https://github.com/estelle-a/ServerlessConf2018-Workshop-OpenFaas/blob/master/01-Raspberry-Pis.md)
+2. [Chapter 2 - Setup the network](https://github.com/estelle-a/ServerlessConf2018-Workshop-OpenFaas/blob/master/02-Setup-network.md)
+3. [Chapter 3 - Install Docker & Kubernetes](https://github.com/estelle-a/ServerlessConf2018-Workshop-OpenFaas/blob/master/03-Docker-Kubernetes-Installation.md)
+4. [Chapter 4 - Install OpenFaas](https://github.com/estelle-a/ServerlessConf2018-Workshop-OpenFaas/blob/master/04-OpenFaas-Installation.md)
+5. [Chapter 5 - Create your own Azure account]()
+6. [Chapter 6 - Use case 1:]()
+7. [Chapter 7 - Use case 2:]()
+8. [Chapter 8 - Use case 3:]()
