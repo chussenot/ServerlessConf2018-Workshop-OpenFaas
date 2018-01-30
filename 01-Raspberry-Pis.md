@@ -16,6 +16,4 @@ _As preconized on the Raspberrypi.org website, I use [Etcher](https://etcher.io/
 3 - Enable SSH
 Without any display, you can easily enable the SSH by adding a file named **ssh** without any extension, onto the boot partition of the micro SD Card.
 
-
-
-
+4 - Download and install [Putty](https://www.putty.org/).
