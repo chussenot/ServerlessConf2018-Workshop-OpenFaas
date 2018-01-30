@@ -1,5 +1,5 @@
-
 # Chapter 1 - Install the Raspberry Pis
+
 
 ## Setup the Raspberry Pi
 
@@ -19,4 +19,4 @@ Without any display, you can easily enable the SSH by adding a file named **ssh*
 
 4 - Download and install [Putty](https://www.putty.org/).
 
--> [Next Chapter](https://github.com/estelle-a/ServerlessConf2018-Workshop-OpenFaas/blob/master/02-Setup-network.md)
+-> Go to [Next Chapter](https://github.com/estelle-a/ServerlessConf2018-Workshop-OpenFaas/blob/master/02-Setup-network.md)
