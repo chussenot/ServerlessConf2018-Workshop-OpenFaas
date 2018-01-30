@@ -18,9 +18,9 @@ _As preconized on the Raspberrypi.org website, I use [Etcher](https://etcher.io/
 Without any display, you can easily enable the SSH by adding a file named **ssh** without any extension, onto the boot partition of the micro SD Card.
 
 With a display
-...
+```
 sudo raspi-config
-...
+```
 'Interfacing Options'\'P2 SSH'  
 ![image](https://github.com/estelle-a/ServerlessConf2018-Workshop-OpenFaas/blob/master/images/01-005.jpg)
 
