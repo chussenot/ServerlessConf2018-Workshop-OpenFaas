@@ -1,5 +1,11 @@
+SD_CARD_BOOT_PARTITION:=/dev/mmcblk0p1
+SD_CARD_ROOT_PARTITION:=/dev/mmcblk0p2
+HOSTNAME:=c1-000
+
 platform := $(shell uname)
 deps := ansible
+
+export SD_CARD_ROOT_PARTITION SD_CARD_BOOT_PARTITION HOSTNAME
 
 help: ## Show this help.
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
@@ -20,7 +26,11 @@ list-disks: ## List all disks
 flash: ## Flash your micro-sd cards
 	./flash
 
+init: ## Bootstrap your ssh, wifi, etc.
+	./init
+
 configure: ## Configure a raspi on the network
 	./configure
 
-.PHONY: help install list-disks flash configure
+.DEFAULT_GOAL: help
+.PHONY: help install list-disks flash init configure

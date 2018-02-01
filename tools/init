@@ -4,17 +4,20 @@ set -e
 
 mkdir -p build
 
-echo "Add your SD_CARD_BOOT_PARTITION"
-read SD_CARD_BOOT_PARTITION
+# echo "Add your SD_CARD_BOOT_PARTITION"
+# read SD_CARD_BOOT_PARTITION
 
-echo "Add your SD_CARD_ROOT_PARTITION"
-read SD_CARD_ROOT_PARTITION
+# echo "Add your SD_CARD_ROOT_PARTITION"
+# read SD_CARD_ROOT_PARTITION
 
-echo "Add an HOSTNANE"
-read HOSTNAME
+# echo "Add an HOSTNANE"
+# read HOSTNAME
+
+echo "Check"
+mkdir -p build/mnt
+umount build/mnt || /bin/true
 
 echo "Mount boot sdcard"
-mkdir -p build/mnt
 sudo mount ${SD_CARD_BOOT_PARTITION} ./build/mnt
 
 echo "Force ssh to start at first boot"
