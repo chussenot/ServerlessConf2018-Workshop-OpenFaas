@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+set -e
+
+echo "Add your SD_CARD_DEVICE"
+read SD_CARD_DEVICE
+
+mkdir -p build
+
+if [ ! -f build/raspbian.zip ]
+then
+    wget -O build/raspbian.zip https://downloads.raspberrypi.org/raspbian_lite_latest
+    unzip build/raspbian.zip
+fi
+
+raspbian_image=`ls ./*.img`
+
+echo "Copy image ${raspbian_image} to sdcard"
+sudo dd if=${raspbian_image} of=${SD_CARD_DEVICE} bs=4m
+
+echo "Force disk sync"
+sync
