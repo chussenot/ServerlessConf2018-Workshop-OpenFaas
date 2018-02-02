@@ -27,13 +27,13 @@ After completing this workshop, you should be able to:
 * Create your own serverless Lab with a Raspberry Pi Cluster, Docker, Kubernetes
   and OpenFaas,
 * Understand the fundamentals of Faas,
-* Learn how to apply these concepts on real world scenarious leveraging
+* Learn how to apply these concepts on real world scenarii leveraging
   the power of Azure Services.
 
 
 ## Prerequisites
 
-* 3 or more Raspberry Pi 2 or 3
+* 3 or more Raspberry Pi 3
 * 3 or more power supply line for Raspberry Pi
 * 3 or more micro SD Cards
   (16Go min., 32Go if you can - _Faster SD Cards are better_)

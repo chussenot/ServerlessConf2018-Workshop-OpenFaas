@@ -20,7 +20,9 @@ Export the name of your favorite EDITOR
 export EDITOR=vim # vim, nano, vi, etc.
 ```
 
-Then,
+If you need to be root futures steps, just do `sudo -i`
+
+### RPi2 with dongle configuration
 
 ```
 sudo $EDITOR /etc/network/interfaces
@@ -37,9 +39,9 @@ Customize your with the configuration below,
 ```
 # allow-hotplug wlan0 # Allow RPi with Wifi Dongle
 iface wlan0 inet static
-address 192.168.1.100
-netmask 255.255.255.0
-gateway 192.168.1.1
+address 192.168.0.27
+netmask 255.255.252.0
+gateway 85.169.48.1
 wpa-ssid "SSID"
 wpa-psk "PASSWORD"
 
@@ -47,10 +49,33 @@ ifdown wlan0
 ifup wlan0
 ```
 
-The usual way to get the system to re-read the file and use the changes is to do
+Reboot your system
 
 ```
-sudo ifdown wlan0 && sudo ifup wlan0
+sudo reboot
+```
+
+### RPi3 Configuration
+
+```
+sudo $EDITOR /etc/wpa_supplicant/wpa_supplicant.conf
+```
+
+Add at the end of the file  
+
+```
+network={
+  ssid="SSID NAME"
+  psk="WIFI PASSWORD"
+  key_mgmt=WPA-PSK
+}
+```
+
+Reboot the RPi then check the IP address  
+
+```
+ifconfig wlan0
+hostname -i
 ```
 
 Without any display,
