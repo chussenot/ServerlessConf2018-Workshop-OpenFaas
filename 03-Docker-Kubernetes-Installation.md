@@ -89,7 +89,7 @@ available in a default location for use with `kubectl`.
 14 - Save your join-token
 
 Your join token is valid for 24 hours, so save it into a text file. Here's an example:
-![image](./images/03-001.jpg)
+![image](./images/03-001.png)
 
 15 - Setup networking
 Install Weave network driver
