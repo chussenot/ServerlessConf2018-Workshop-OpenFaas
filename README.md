@@ -38,11 +38,10 @@ Prerequisites
 * 3 or more power supply line for Raspberry Pi
 * 3 or more micro SD Cards
   (16Go min., 32Go if you can - _Faster SD Cards are better_)
-* 1 small routeur + ethernet cables if you do not want to use your own WiFi
-  or if you do not have WiFi dongle with RPi2
+* 1 small WiFi router
 * 1 HDMI screen + cable (optional)
 * 1 wireless tiny keyboard with Touchpad mouse (optional)
-* Own any Microsoft Azure subscription
+* Own any Microsoft Azure subscription (Trial can be fine!)
 
 Overview of this workshop
 -------------------------
