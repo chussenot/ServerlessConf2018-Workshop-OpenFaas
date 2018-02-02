@@ -91,6 +91,12 @@ available in a default location for use with `kubectl`.
 Your join token is valid for 24 hours, so save it into a text file. Here's an example:
 ![image](./images/03-001.png)
 
+A tool like [ctop](https://github.com/bcicen/ctop) can be useful in the next parts.
+```
+sudo wget https://github.com/bcicen/ctop/releases/download/v0.7/ctop-0.7-linux-arm -O /usr/local/bin/ctop
+sudo chmod +x /usr/local/bin/ctop
+```
+
 15 - Setup networking
 Install Weave network driver
 
