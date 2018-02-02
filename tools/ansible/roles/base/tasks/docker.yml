@@ -1,6 +1,30 @@
 ---
 
-# Install docker with the convenience script.
-# https://docs.docker.com/install/linux/docker-ce/debian/#install-using-the-convenience-script
-- name: Install Docker
-  command: curl -sSL get.docker.com | sh && \ sudo usermod pi -aG docker
+- name: Install Docker dependencies
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  with_items:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - software-properties-common
+
+- name: Install Docker CE
+  apt:
+    name: docker-ce=17.09.0~ce-0~raspbian
+    update_cache: yes
+
+- user:
+    name: pi
+    group: docker
+
+- name: Enable Docker service and ensure it is not masked
+  systemd:
+    name: docker
+    enabled: yes
+    masked: no
+
+- name: Make sure the service is running
+  systemd: state=started name=docker
