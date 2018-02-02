@@ -1,7 +1,7 @@
 # Chapter 3 - Install Docker & Kubernetes
 
-In this chapter, we are following the steps described by Alex Ellis in the
-[k8s-pi](https://gist.github.com/alexellis/fdbc90de7691a1b9edb545c17da2d975#file-k8s-pi-md).
+In this chapter, we are following an **updated** version of the steps described
+by Alex Ellis in the [k8s-pi](https://gist.github.com/alexellis/fdbc90de7691a1b9edb545c17da2d975#file-k8s-pi-md).
 
 First update your packages list `/etc/apt/sources.list`
 
