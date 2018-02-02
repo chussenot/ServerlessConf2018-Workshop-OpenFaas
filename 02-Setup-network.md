@@ -1,9 +1,11 @@
-# Chapter 2 - Setup the network
+Chapter 2 - Setup the network
+=============================
 
-
-## Configure the IP address
+Configure the IP address
+------------------------
 
 5 - Check you IP address
+
 In order to connect to your Raspberry Pi from your computer using SSH (or VNC),
 you need to know the Pi's IP address.
 The easiest way is when you have a display connected:
@@ -12,10 +14,49 @@ The easiest way is when you have a display connected:
 hostname -l
 ```
 
+Export the name of your favorite EDITOR
+
+```
+export EDITOR=vim # vim, nano, vi, etc.
+```
+
+Then,
+
+```
+sudo $EDITOR /etc/network/interfaces
+```
+
+Customize your with the configuration below,
+
+* SSID
+* PASSWORD
+* STATIC_ADDRESS
+* NETMASK
+* GATEWAY
+
+```
+# allow-hotplug wlan0 # Allow RPi with Wifi Dongle
+iface wlan0 inet static
+address 192.168.1.100
+netmask 255.255.255.0
+gateway 192.168.1.1
+wpa-ssid "SSID"
+wpa-psk "PASSWORD"
+
+ifdown wlan0
+ifup wlan0
+```
+
+The usual way to get the system to re-read the file and use the changes is to do
+
+```
+sudo ifdown wlan0 && sudo ifup wlan0
+```
+
 Without any display,
 
 6 - Change the hostname
-Use the _raspi-config_ utility to change the hostname to `k8s-master-1`
+Use the _raspi-config_ utility to change the hostname to `k8s-master-001`
 or similar and then reboot.
 
 7 - Set a static IP address
