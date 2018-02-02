@@ -60,3 +60,5 @@ different ways to interact with your local Serverless Lab or with a public cloud
 6. [Chapter 6 - Use case 1:]()
 7. [Chapter 7 - Use case 2:]()
 8. [Chapter 8 - Use case 3:]()
+
+If you want to automate some steps... take a look at the `tools` folder.
