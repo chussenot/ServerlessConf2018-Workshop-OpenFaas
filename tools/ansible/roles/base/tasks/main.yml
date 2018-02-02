@@ -1,10 +1,5 @@
 ---
 
-- name: Simple Copy
-  template:
-    src: ready
-    dest: ./ready
-
 - name: Set timezone
   timezone:
     name: Europe/Paris
@@ -27,3 +22,4 @@
 
 - include_tasks: fs.yml
 - include_tasks: docker.yml
+- include_tasks: kubernetes.yml

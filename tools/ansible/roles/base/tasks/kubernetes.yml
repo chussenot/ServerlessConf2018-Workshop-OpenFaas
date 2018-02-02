@@ -1,0 +1,45 @@
+---
+
+- name: Disable Swap to avoid errors in Kubernetes
+  command: dphys-swapfile swapoff dphys-swapfile uninstall && update-rc.d dphys-swapfile remove
+
+# Configure cgroups to run Kubernetes on RPis
+
+- name: Test for entry
+  command: 'grep "cgroup_enable=cpuset cgroup_memory=1 cgroup_enable=memory" /boot/cmdline.txt'
+  register: test_grep
+  ignore_errors: yes
+
+- name: Cmdline add
+  lineinfile:
+    path: /boot/cmdline.txt
+    backrefs: True
+    state: present
+    regexp: '(.*)$'
+    line: '\1 cgroup_enable=cpuset cgroup_memory=1 cgroup_enable=memory'
+  when: test_grep.stdout == ""
+  register: _cmdline_config
+
+- name: Restart machine
+  shell: sleep 2 && shutdown -r now "/boot/cmdline.txt config changed"
+  async: 1
+  poll: 0
+  ignore_errors: true
+  when: _cmdline_config.changed
+
+- name: Waiting for machine to come back
+  local_action: wait_for port=22 host="{{ ansible_host }}" delay=30 timeout=300
+  become: false
+  when: _cmdline_config.changed
+
+- name: Add Google cloud apt key
+  command: curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+
+- name: Add Kubernetes in sources list
+  command: echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+
+# https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/
+- name: Install kubeadm
+  apt:
+    name: kubeadm
+    update_cache: yes

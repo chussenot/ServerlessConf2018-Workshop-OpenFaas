@@ -4,4 +4,5 @@
   become: yes
   name: Configure all the needed stuff
   roles:
-    - { role: base, tags: [base]}
+    - role: base
+      tags: [base]
