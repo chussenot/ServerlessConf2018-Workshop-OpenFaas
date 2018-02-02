@@ -1,7 +1,10 @@
-# Chapter 3 - Install Docker & Kubernetes
+Chapter 3 - Install Docker & Kubernetes
+=======================================
 
 In this chapter, we are following an **updated** version of the steps described
 by Alex Ellis in the [k8s-pi](https://gist.github.com/alexellis/fdbc90de7691a1b9edb545c17da2d975#file-k8s-pi-md).
+
+Follow these steps to configure your master and worker nodes.
 
 First update your packages list `/etc/apt/sources.list`
 
@@ -9,7 +12,8 @@ First update your packages list `/etc/apt/sources.list`
 sudo apt update
 ```
 
-## Install Docker
+Install Docker
+-------------
 
 8 - This installs 17.09.
 ```
@@ -149,11 +153,20 @@ kubectl apply -f \
 
 ```
 kubectl get pods --namespace=kube-system
+
+NAME                             READY     STATUS    RESTARTS   AGE
+etcd-c1-000                      1/1       Running   0          57m
+kube-apiserver-c1-000            1/1       Running   0          57m
+kube-controller-manager-c1-000   1/1       Running   0          56m
+kube-dns-7b6ff86f69-br82b        0/3       Pending   0          57m
+kube-proxy-nnqdj                 1/1       Running   0          57m
+kube-scheduler-c1-000            1/1       Running   0          56m
+weave-net-fblhq                  2/2       Running   0          55s
 ```
 
-![image](./images/03-002.jpg)
+## Configure the worker nodes
 
-## Configure worker Nodes
+Repeat all steps to install docker & kubernetes and...
 
 17 - Join the cluster
 Replace the token / IP for the output you got from the master node:
