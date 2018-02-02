@@ -1,4 +1,5 @@
-# OpenFaas in a Raspberry Pi Cluster - Workshop
+OpenFaas in a Raspberry Pi Cluster - Workshop
+=============================================
 
 _Learn how to build a Kubernetes Cluster with Raspberry Pis as servers and how
 to run OpenFaas though some practical use cases._
@@ -16,8 +17,8 @@ with each softwares' new version.
 You can subscribe to [Alex Ellis' blog](https://www.alexellis.io) to see the
 latest updates of OpenFaas.
 
-
-## Objectives
+Objectives
+----------
 
 Building a cluster with Raspberry Pis is an affordable way to build a
 supercomputer or to simulate a mesh network or a scalable infrastructure.
@@ -30,8 +31,8 @@ After completing this workshop, you should be able to:
 * Learn how to apply these concepts on real world scenarii leveraging
   the power of Azure Services.
 
-
-## Prerequisites
+Prerequisites
+-------------
 
 * 3 or more Raspberry Pi 3
 * 3 or more power supply line for Raspberry Pi
@@ -43,8 +44,8 @@ After completing this workshop, you should be able to:
 * 1 wireless tiny keyboard with Touchpad mouse (optional)
 * Own any Microsoft Azure subscription
 
-
-## Overview of this workshop
+Overview of this workshop
+-------------------------
 
 This workshop contains XX chapters, the first 5 chapters will cover the material
 settings and the last ones will present some samples so you can understand
