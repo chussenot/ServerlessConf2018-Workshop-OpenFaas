@@ -1,2 +1,6 @@
-[pi]
-openfaas.local ansible_user=pi become=yes become_user=root
+[all]
+c1-000.local ansible_user=pi become=yes become_user=root
+
+[master]
+
+[workers]

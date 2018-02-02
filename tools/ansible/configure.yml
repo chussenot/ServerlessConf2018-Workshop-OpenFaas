@@ -1,6 +1,6 @@
 ---
 
-- hosts: pi
+- hosts: all
   become: yes
   name: Configure all the needed stuff
   roles:
