@@ -76,7 +76,7 @@ available in a default location for use with `kubectl`.
 14 - Save your join-token
 
 Your join token is valid for 24 hours, so save it into a text file. Here's an example:
-![image](https://github.com/estelle-a/ServerlessConf2018-Workshop-OpenFaas/blob/master/images/03-001.jpg)
+![image](./images/03-001.jpg)
 
 15 - Setup networking
 Install Weave network driver
@@ -99,7 +99,7 @@ kubectl apply -f \
 kubectl get pods --namespace=kube-system
 ```
 
-![image](https://github.com/estelle-a/ServerlessConf2018-Workshop-OpenFaas/blob/master/images/03-002.jpg)
+![image](./images/03-002.jpg)
 
 ## Configure worker Nodes
 
@@ -116,7 +116,7 @@ You can now run this on the master:
 kubectl get nodes
 ```
 
-![image](https://github.com/estelle-a/ServerlessConf2018-Workshop-OpenFaas/blob/master/images/03-003.jpg)
+![image](./images/03-003.jpg)
 
 ## Deploy a container
 
@@ -212,4 +212,4 @@ Now on the Kubernetes master remove the test deployment:
 kubectl delete -f function.yml
 ```
 
--> Go to [Next Chapter](https://github.com/estelle-a/ServerlessConf2018-Workshop-OpenFaas/blob/master/04-OpenFaas-Installation.md)
+-> Go to [Next Chapter](./04-OpenFaas-Installation.md)

@@ -43,4 +43,4 @@ Hit Control + D.
 You may also need to make a reservation on your router's DHCP table so these addresses don't get given out to other devices on your network.
 
 
--> Go to [Next Chapter](https://github.com/estelle-a/ServerlessConf2018-Workshop-OpenFaas/blob/master/03-Docker-Kubernetes-Installation.md)
+-> Go to [Next Chapter](./03-Docker-Kubernetes-Installation.md)
