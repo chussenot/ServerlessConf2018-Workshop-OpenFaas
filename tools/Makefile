@@ -1,6 +1,8 @@
 SD_CARD_BOOT_PARTITION:=/dev/mmcblk0p1
 SD_CARD_ROOT_PARTITION:=/dev/mmcblk0p2
-HOSTNAME:=c1-000
+NODE:=slave
+NUM:=001
+HOSTNAME:=$(NODE)-$(NUM)
 
 platform := $(shell uname)
 deps := ansible
@@ -32,5 +34,15 @@ init: ## Bootstrap your ssh, wifi, etc.
 configure: ## Configure a raspi on the network
 	./configure
 
+umount: ## Umount 
+	@mkdir -p build/mnt
+	sudo umount build/mnt | /bin/true
+
+mount-root: umount ## Mount the root partition
+	sudo mount $(SD_CARD_ROOT_PARTITION) build/mnt
+
+mount-boot: umount ## Mount the boot partition
+	sudo mount $(SD_CARD_BOOT_PARTITION) build/mnt
+
 .DEFAULT_GOAL: help
-.PHONY: help install list-disks flash init configure
+.PHONY: help install list-disks flash init configure umount mount-root mount-boot
