@@ -55,3 +55,4 @@ Resources
 * [Memory issue](https://docs.docker.com/engine/admin/resource_constraints/#memory)
 * [5 things on docker-rpi by @alexellis](https://blog.alexellis.io/5-things-docker-rpi/)
 * [resin.io base image](https://hub.docker.com/r/resin/rpi-raspbian/)
+* [enable cgroup memory](https://github.com/raspberrypi/linux/commit/ba742b52e5099b3ed964e78f227dc96460b5cdc0)

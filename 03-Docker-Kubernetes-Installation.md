@@ -3,12 +3,25 @@
 In this chapter, we are following the steps described by Alex Ellis in the
 [k8s-pi](https://gist.github.com/alexellis/fdbc90de7691a1b9edb545c17da2d975#file-k8s-pi-md).
 
+First update your packages list `/etc/apt/sources.list`
+
+```
+sudo apt update
+```
+
 ## Install Docker
 
-8 - This installs 17.12 or newer.
+8 - This installs 17.09.
 ```
-curl -sSL get.docker.com | sh && \
+sudo apt-get install -y \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    software-properties-common \
+    docker-ce=17.09.0~ce-0~raspbian
 sudo usermod pi -aG docker
+sudo systemctl enable docker.service
+sudo systemctl start docker.service
 ```
 
 ## Disable Swap to avoid errors in Kubernetes
@@ -31,7 +44,7 @@ sudo nano /boot/cmdline.txt
 ```
 Add this text at the end of the line, but don't create any new lines:
 ```
-cgroup_enable=cpuset cgroup_enable=memory
+cgroup_enable=cpuset cgroup_memory=1 cgroup_enable=memory
 ```
 
 11 - Now reboot - **do not skip this step**
