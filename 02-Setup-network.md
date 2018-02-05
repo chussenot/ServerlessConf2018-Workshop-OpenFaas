@@ -11,7 +11,7 @@ you need to know the Pi's IP address.
 The easiest way is when you have a display connected:
 
 ```
-hostname -l
+hostname -I
 ```
 
 Export the name of your favorite EDITOR
