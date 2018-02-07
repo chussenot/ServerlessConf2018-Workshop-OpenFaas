@@ -11,6 +11,32 @@
     - curl
     - software-properties-common
 
+- name: Add Docker apt key
+  apt_key:
+    url: https://download.docker.com/linux/raspian/gpg
+    state: present
+  register: add_repository_key
+  ignore_errors: true
+
+- name: Ensure curl is present (on older systems without SNI).
+  apt:
+    name: curl
+    state: latest
+  sudo: yes
+  when: add_repository_key|failed
+
+- name: Add Docker apt key (alternative for older systems without SNI).
+  shell: "curl -sSL https://download.docker.com/linux/raspbian/gpg | sudo apt-key add -"
+  args:
+    warn: no
+  when: add_repository_key|failed
+
+- name: Add docker-ce in sources list
+  apt_repository:
+    repo: deb [arch=armhf] https://download.docker.com/linux/raspbian stretch stable
+    state: present
+    filename: 'docker'
+
 - name: Install Docker CE
   apt:
     name: docker-ce=17.09.0~ce-0~raspbian
