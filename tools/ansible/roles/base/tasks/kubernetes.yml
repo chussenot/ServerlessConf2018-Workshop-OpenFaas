@@ -32,11 +32,34 @@
   become: false
   when: _cmdline_config.changed
 
-- name: Add Google cloud apt key
-  command: curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+- name: Add GCP apt key
+  apt_key:
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    state: present
+  register: add_repository_key
+  ignore_errors: true
+
+- name: Ensure curl is present (on older systems without SNI).
+  apt:
+    name: curl
+    state: latest
+  sudo: yes
+  when: add_repository_key|failed
+
+- name: Add GCP apt key (alternative for older systems without SNI).
+  shell: "curl -sSL https://download.docker.com/linux/raspian/gpg | sudo apt-key add -"
+  args:
+    warn: no
+  when: add_repository_key|failed
 
 - name: Add Kubernetes in sources list
   command: echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+
+- name: Add Kube tools in sources list
+  apt_repository:
+    repo: deb http://apt.kubernetes.io/ kubernetes-xenial main
+    state: present
+    filename: 'kubernetes'
 
 # https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/
 - name: Install kubeadm

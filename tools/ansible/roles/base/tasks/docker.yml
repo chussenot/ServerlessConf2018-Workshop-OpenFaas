@@ -13,7 +13,7 @@
 
 - name: Add Docker apt key
   apt_key:
-    url: https://download.docker.com/linux/raspian/gpg
+    url: https://download.docker.com/linux/raspbian/gpg
     state: present
   register: add_repository_key
   ignore_errors: true
