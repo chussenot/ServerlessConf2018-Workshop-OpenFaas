@@ -1,0 +1,9 @@
+provider:
+  name: faas
+  gateway: http://localhost:8080
+
+functions:
+  hello:
+    lang: python-armhf
+    handler: ./hello
+    image: hello
