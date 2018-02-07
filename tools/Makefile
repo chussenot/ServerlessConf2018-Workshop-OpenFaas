@@ -1,4 +1,5 @@
 ANSIBLE_NOCOWS=1
+ANSIBLE_HOST_KEY_CHECKING=0
 SD_CARD_BOOT_PARTITION:=/dev/mmcblk0p1
 SD_CARD_ROOT_PARTITION:=/dev/mmcblk0p2
 NODE:=slave
@@ -11,7 +12,8 @@ deps := ansible
 export SD_CARD_ROOT_PARTITION \
 			 SD_CARD_BOOT_PARTITION \
 			 HOSTNAME \
-			 ANSIBLE_NOCOWS
+			 ANSIBLE_NOCOWS \
+			 ANSIBLE_HOST_KEY_CHECKING
 
 help: ## Show this help.
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
