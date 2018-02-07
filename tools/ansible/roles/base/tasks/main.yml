@@ -12,13 +12,9 @@
   with_items:
     - vim
     - git
-    - tig
     - wget
     - curl
     - jq
-    - python3
-    - python3-pip
-    - python-apt
 
 - include_tasks: fs.yml
 - include_tasks: docker.yml
