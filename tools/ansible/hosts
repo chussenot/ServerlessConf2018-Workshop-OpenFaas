@@ -1,5 +1,5 @@
 [all]
-c1-000.local ansible_user=pi become=yes become_user=root
+slave-[001:006] ansible_user=pi become=yes become_user=root
 
 [master]
 
