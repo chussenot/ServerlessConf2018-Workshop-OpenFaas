@@ -54,3 +54,8 @@
 
 - name: Make sure the service is running
   systemd: state=started name=docker
+
+- name: Install Docker Compose
+  apt:
+    name: docker-compose
+    update_cache: yes
