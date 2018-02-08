@@ -1,6 +1,16 @@
-[all]
+#
+# Example Inventory file
+#
+
+[cluster_001]
+
+# The cluster group contains two subgroups: master and node
+[cluster_001:children]
+cluster_001_master
+cluster_001_node
+
+[cluster_001_master]
+master-001 ansible_user=pi become=yes become_user=root
+
+[cluster_001_node]
 slave-[001:006] ansible_user=pi become=yes become_user=root
-
-[master]
-
-[workers]

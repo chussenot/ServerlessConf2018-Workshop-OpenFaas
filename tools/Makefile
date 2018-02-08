@@ -5,7 +5,7 @@ SD_CARD_ROOT_PARTITION:=/dev/mmcblk0p2
 NODE:=slave
 NUM:=001
 HOSTNAME:=$(NODE)-$(NUM)
-CLUSTER_NAME:=cluster-1
+CLUSTER_NAME:=cluster_001
 
 platform := $(shell uname)
 deps := ansible
