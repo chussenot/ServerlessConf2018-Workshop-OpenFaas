@@ -1,0 +1,5 @@
+kind: MasterConfiguration
+apiVersion: kubeadm.k8s.io/v1alpha1
+controllerManagerExtraArgs:
+  pod-eviction-timeout: 10s
+  node-monitor-grace-period: 10s
