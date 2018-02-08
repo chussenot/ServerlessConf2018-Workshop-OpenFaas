@@ -3,6 +3,9 @@
 - hosts: "{{ cluster_name }}"
   become: yes
   name: Configure all the needed stuff
+  pre_tasks:
+    - name: Read token from file
+      include_vars: cfg/{{ cluster_name }}/token.yml
   roles:
     - role: base
       tags: [base]
