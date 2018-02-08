@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+echo "Start to create your cluster: $CLUSTER_NAME"
+pushd ansible
+  ansible-playbook -i hosts create.yml -e cluster_name=$CLUSTER_NAME
+popd

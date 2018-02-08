@@ -1,0 +1,37 @@
+---
+# Example invocation:
+# ansible-playbook create.yml -e "cluster_name=cluster-1"
+
+- hosts: localhost
+  gather_facts: false
+  roles:
+    - role: token
+      tags:
+        - token
+  tasks:
+    - debug:
+        var: token
+      tags:
+        - token
+
+# (1/2) Installing the basic on your hosts
+- hosts: "{{ cluster_name }}"
+  become: yes
+  name: Configure all the needed stuff
+  roles:
+    - role: base
+      tags: [base]
+
+# (2/2) Initialize your master node
+- hosts: "{{ cluster_name }}_master"
+  become: true
+  pre_tasks:
+    - name: Read token from file
+      include_vars: cfg/{{ cluster_name }}/token.yml
+  tasks:
+    - set_fact:
+        master_ip_address: "{{ master_ip_address_configured }}"
+      when: master_ip_address_configured is defined
+    - set_fact:
+        master_ip_address: "{{ ansible_default_ipv4['address'] }}"
+      when: master_ip_address_configured is not defined

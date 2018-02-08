@@ -3,14 +3,17 @@
 #
 
 [cluster_001]
-# cluster group contains two subgroups: master and node
 [cluster_001:children]
+# cluster group contains two subgroups: master and node
 cluster_001_master
 cluster_001_node
 [cluster_001_master]
-master-001 ansible_user=pi become=yes become_user=root
+slave-001 ansible_user=pi become=yes become_user=root
+[cluster_001_master:vars]
+# If you need to specify a specific ip address for the master
+# master_ip_address_configured=1.2.3.4
 [cluster_001_node]
-slave-[001:006] ansible_user=pi become=yes become_user=root
+slave-[002:006] ansible_user=pi become=yes become_user=root
 
 [cluster_002]
 # cluster group contains two subgroups: master and node

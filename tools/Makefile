@@ -42,8 +42,8 @@ init: ## Bootstrap your ssh, wifi, etc.
 generate_token: ## Generate a token for the K8s master of your cluster
 	./generate_token
 
-configure: ## Configure a raspi on the network
-	./configure
+create: ## Create a cluster on the network
+	./create
 
 umount: ## Umount
 	@mkdir -p build/mnt
@@ -56,5 +56,5 @@ mount-boot: umount ## Mount the boot partition
 	sudo mount $(SD_CARD_BOOT_PARTITION) build/mnt
 
 .DEFAULT_GOAL: help
-.PHONY: help install list-disks flash init configure \
+.PHONY: help install list-disks flash init create \
 				umount mount-root mount-boot generate_token
