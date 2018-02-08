@@ -3,7 +3,7 @@
 - set_fact:
     master_ip_address: "{{ master_ip_address_configured }}"
   when: master_ip_address_configured is defined
-  
+
 - set_fact:
     master_ip_address: "{{ ansible_default_ipv4['address'] }}"
   when: master_ip_address_configured is not defined
@@ -21,7 +21,7 @@
     - master
 
 - name: Initialize master
-  command: kubeadm init --token {{ token }} -config /etc/kubernetes/kubeadm_conf.yaml
+  command: kubeadm init --token {{ token }} -config /etc/kubernetes/kubeadm_conf.yaml --ignore-preflight-errors
   args:
     creates: /etc/kubernetes/pki
   register: master_init
@@ -29,3 +29,12 @@
   tags:
     - master
     - init
+
+- name: Copy /etc/kubernetes/admin.conf on master to cfg/cluster_name/admin.conf
+  fetch:
+    src: /etc/kubernetes/admin.conf
+    dest: cfg/{{ cluster_name }}/admin.conf
+    flat: true
+  tags:
+    - master
+    - remote
