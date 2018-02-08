@@ -1,8 +1,8 @@
 ---
 # https://github.com/openfaas/faas/blob/master/guide/deployment_k8s.md
 - name: Install OpenFaas for k8s
-  raw: git clone https://github.com/openfaas/faas-netes && \
-       cd faas-netes && \
-       git checkout 0.4.3 && \
-       kubectl apply -f ./namespaces.yml && \
-       kubectl apply -f ./yaml
+  git:
+    repo: https://github.com/openfaas/faas-netes
+    dest: faas-netes
+    version: 0.4.3
+

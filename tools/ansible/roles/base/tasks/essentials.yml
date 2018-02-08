@@ -1,0 +1,19 @@
+---
+
+- name: Install basic tools
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  with_items:
+    - vim
+    - git
+    - wget
+    - curl
+    - jq
+
+- name: Install ctop
+  get_url:
+    url: https://github.com/bcicen/ctop/releases/download/v0.7/ctop-0.7-linux-arm
+    dest: /usr/local/bin/ctop
+    mode: a+x

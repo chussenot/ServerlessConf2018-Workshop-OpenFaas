@@ -4,18 +4,8 @@
   timezone:
     name: Europe/Paris
 
-- name: Install basic tools
-  apt:
-    name: "{{ item }}"
-    state: present
-    update_cache: yes
-  with_items:
-    - vim
-    - git
-    - wget
-    - curl
-    - jq
-
+- include_tasks: essentials.yml
 - include_tasks: fs.yml
 - include_tasks: docker.yml
 - include_tasks: kubernetes.yml
+- include_tasks: openfaas.yml
