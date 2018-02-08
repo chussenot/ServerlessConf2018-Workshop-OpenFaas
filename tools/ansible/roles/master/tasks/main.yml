@@ -38,3 +38,6 @@
   tags:
     - master
     - remote
+
+- name: Copy the conf for the py user
+  command: cp /etc/kubernetes/admin.conf $HOME/ && chown $(id -u):$(id -g) $HOME/admin.conf && export KUBECONFIG=$HOME/admin.conf
