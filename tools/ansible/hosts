@@ -3,14 +3,31 @@
 #
 
 [cluster_001]
-
-# The cluster group contains two subgroups: master and node
+# cluster group contains two subgroups: master and node
 [cluster_001:children]
 cluster_001_master
 cluster_001_node
-
 [cluster_001_master]
 master-001 ansible_user=pi become=yes become_user=root
-
 [cluster_001_node]
 slave-[001:006] ansible_user=pi become=yes become_user=root
+
+[cluster_002]
+# cluster group contains two subgroups: master and node
+[cluster_002:children]
+cluster_002_master
+cluster_002_node
+[cluster_002_master]
+master-002 ansible_user=pi become=yes become_user=root
+[cluster_002_node]
+slave-[007:012] ansible_user=pi become=yes become_user=root
+
+[cluster_003]
+# cluster group contains two subgroups: master and node
+[cluster_003:children]
+cluster_003_master
+cluster_003_node
+[cluster_003_master]
+master-003 ansible_user=pi become=yes become_user=root
+[cluster_003_node]
+slave-[013:018] ansible_user=pi become=yes become_user=root
