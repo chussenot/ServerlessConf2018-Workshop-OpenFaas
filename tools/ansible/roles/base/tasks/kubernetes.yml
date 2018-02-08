@@ -1,7 +1,7 @@
 ---
 
 - name: Disable Swap to avoid errors in Kubernetes
-  command: dphys-swapfile swapoff dphys-swapfile uninstall && update-rc.d dphys-swapfile remove
+  command: dphys-swapfile swapoff && dphys-swapfile uninstall && update-rc.d dphys-swapfile remove
 
 # Configure cgroups to run Kubernetes on RPis
 
