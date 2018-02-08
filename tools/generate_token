@@ -1,0 +1,6 @@
+#!/bin/sh
+
+pushd ansible
+  ansible-playbook generate_token.yml -e cluster_name=$CLUSTER_NAME
+popd
+

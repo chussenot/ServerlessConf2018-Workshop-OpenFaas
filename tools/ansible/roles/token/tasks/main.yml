@@ -1,0 +1,12 @@
+---
+
+- name: stat tokens/cluster_name.yml
+  stat:
+    path:  cfg/{{ cluster_name }}/token.yml
+  register: file
+
+- include_tasks: retrieve.yml
+  when: file.stat.exists
+
+- include_tasks: generate.yml
+  when: not file.stat.exists

@@ -1,0 +1,15 @@
+---
+# Example invocation:
+# ansible-playbook generate_token.yml -e "cluster_name=cluster-1"
+
+- hosts: localhost
+  gather_facts: false
+  roles:
+    - role: token
+      tags:
+        - token
+  tasks:
+    - debug:
+        var: token
+      tags:
+        - token

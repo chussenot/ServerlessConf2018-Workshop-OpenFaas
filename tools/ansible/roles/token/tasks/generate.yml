@@ -1,0 +1,16 @@
+---
+- name: Generate K8s token
+  command: python -c 'import random; print "%0x.%0x" % (random.SystemRandom().getrandbits(3*8), random.SystemRandom().getrandbits(8*8))'
+  register: token_raw
+
+- set_fact:
+    token: '{{ token_raw.stdout }}'
+
+- file:
+    path: cfg/{{ cluster_name }}
+    state: directory
+
+- name: Save K8s token
+  copy:
+    dest: cfg/{{ cluster_name }}/token.yml
+    content: "token: {{ token }}"

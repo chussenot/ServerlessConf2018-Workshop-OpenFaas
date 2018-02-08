@@ -5,6 +5,7 @@ SD_CARD_ROOT_PARTITION:=/dev/mmcblk0p2
 NODE:=slave
 NUM:=001
 HOSTNAME:=$(NODE)-$(NUM)
+CLUSTER_NAME:=cluster-1
 
 platform := $(shell uname)
 deps := ansible
@@ -13,7 +14,8 @@ export SD_CARD_ROOT_PARTITION \
 			 SD_CARD_BOOT_PARTITION \
 			 HOSTNAME \
 			 ANSIBLE_NOCOWS \
-			 ANSIBLE_HOST_KEY_CHECKING
+			 ANSIBLE_HOST_KEY_CHECKING \
+			 CLUSTER_NAME
 
 help: ## Show this help.
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
@@ -37,6 +39,9 @@ flash: ## Flash your micro-sd cards
 init: ## Bootstrap your ssh, wifi, etc.
 	./init
 
+generate_token: ## Generate a token for the K8s master of your cluster
+	./generate_token
+
 configure: ## Configure a raspi on the network
 	./configure
 
@@ -52,4 +57,4 @@ mount-boot: umount ## Mount the boot partition
 
 .DEFAULT_GOAL: help
 .PHONY: help install list-disks flash init configure \
-				umount mount-root mount-boot
+				umount mount-root mount-boot generate_token

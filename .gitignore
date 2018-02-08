@@ -1,1 +1,3 @@
 tools/ansible/configure.yml
+*.retry
+tools/ansible/cfg/
