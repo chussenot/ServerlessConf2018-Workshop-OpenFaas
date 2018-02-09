@@ -6,7 +6,7 @@
 [cluster_001:children]
 # cluster group contains two subgroups: master and node
 cluster_001_master
-#cluster_001_node
+cluster_001_node
 [cluster_001_master]
 slave-001 ansible_user=pi become=yes become_user=root
 [cluster_001_master:vars]

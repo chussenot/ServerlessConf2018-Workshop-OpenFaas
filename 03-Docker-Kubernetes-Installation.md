@@ -88,7 +88,11 @@ cgroup_enable=cpuset cgroup_memory=1 cgroup_enable=memory
 
 ## Install Kubernetes
 
+[Official Documentation](https://kubernetes.io/docs/setup/independent/install-kubeadm/)
+
 12 - Add repo lists & install kubeadm
+
+You should do this on your master nodes and your worker nodes.
 
 ```
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - && \
@@ -100,9 +104,29 @@ sudo apt-get install -qy kubeadm
 ## Initialize your master node
 
 13 - Generate a token
+
+When you initialize your master node, `kubeadm` will generate a token for you.
+
 ```
 sudo kubeadm init --token-ttl=0
 ```
+
+But you can generate your own token with python:
+
+```
+python -c 'import random; print "%0x.%0x" % (random.SystemRandom().getrandbits(3*8), random.SystemRandom().getrandbits(8*8))'
+```
+
+And pass it in the initialization phase.
+
+```
+sudo kubeadm init --token-ttl=0 --token=3dae91.10b0b725926802ee
+```
+
+Other possible parameters:
+
+* `--discovery-token-unsafe-skip-ca-verification` to skip CA verfication.
+* `--ignore-preflight-errors` to bypass prefligth errors.
 
 We pass in `--token-ttl=0` so that the token never expires - do not use this
 setting in production. The UX for `kubeadm` means it's currently very hard
