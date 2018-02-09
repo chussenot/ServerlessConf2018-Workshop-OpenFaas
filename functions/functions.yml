@@ -6,4 +6,4 @@ functions:
   hello:
     lang: python-armhf
     handler: ./hello
-    image: hello
+    image: chussenot/openfaas-hello
