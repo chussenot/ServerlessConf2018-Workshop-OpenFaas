@@ -1,7 +1,12 @@
 ---
 
+# Kubernetes Dashboard is a general purpose, web-based UI for Kubernetes clusters.
+# It allows users to manage applications running in the cluster and troubleshoot
+# them, as well as manage the cluster itself.
+# https://github.com/kubernetes/dashboard/
+
 - name: Install Dashboard
-  command: kubectl --kubeconfig --kubeconfig /etc/kubernetes/admin.conf apply -f https://rawgit.com/kubernetes/dashboard/master/src/deploy/kubernetes-dashboard.yaml
+  command: kubectl --kubeconfig /etc/kubernetes/admin.conf apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard-arm.yaml
   register: dashboard_raw
   tags:
     - master

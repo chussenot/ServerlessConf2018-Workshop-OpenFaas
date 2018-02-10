@@ -69,7 +69,7 @@
 # (3/4) Installing a pod network
 
 - name: Install pod network
-  command: /usr/bin/kubectl --kubeconfig /etc/kubernetes/admin.conf apply -f https://git.io/weave-kube-1.6
+  command: kubectl --kubeconfig /etc/kubernetes/admin.conf apply -f https://git.io/weave-kube-1.6
   register: pod_network
   tags:
     - master
@@ -79,15 +79,15 @@
 - debug:
     var: pod_network.stdout_lines
 
-- name: Wait for Kube-DNS pod running
-  shell: "kubectl --kubeconfig /etc/kubernetes/admin.conf get pods --all-namespaces | grep kube-dns"
-  register: result
-  until: result.stdout.find("Running") != -1
-  retries: 30
-  delay: 10
-  tags:
-    - master
-    - network
+# - name: Wait for Kube-DNS pod running
+#   shell: "kubectl --kubeconfig /etc/kubernetes/admin.conf get pods --all-namespaces | grep kube-dns"
+#   register: result
+#   until: result.stdout.find("Running") != -1
+#   retries: 30
+#   delay: 10
+#   tags:
+#     - master
+#     - network
 
 # Install the k8s dashboard
 - include_tasks: dashboard.yml
