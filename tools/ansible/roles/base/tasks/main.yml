@@ -8,4 +8,3 @@
 - include_tasks: fs.yml
 - include_tasks: docker.yml
 - include_tasks: kubernetes.yml
-- include_tasks: openfaas.yml

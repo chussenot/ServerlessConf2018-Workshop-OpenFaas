@@ -1,6 +1,6 @@
 ---
-  
-# (1/2) Installing the basic on your hosts
+
+# (1/3) Install the dependencies on your cluster nodes
 - hosts: "{{ cluster_name }}"
   become: yes
   name: Configure all the needed stuff
@@ -8,7 +8,7 @@
     - role: base
       tags: [base]
 
-# (2/2) Initialize your master node
+# (2/3) Initialize your master node
 - hosts: "{{ cluster_name }}_master"
   become: true
   pre_tasks:

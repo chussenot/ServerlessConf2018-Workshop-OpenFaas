@@ -62,3 +62,6 @@
   until: result.stdout.find("Running") != -1
   retries: 30
   delay: 10
+
+# Clone the faas-netes git repository
+- include_tasks: openfaas.yml
