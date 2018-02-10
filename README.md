@@ -34,6 +34,7 @@ After completing this workshop, you should be able to:
 Prerequisites
 -------------
 
+* Your own personal computer
 * 3 or more Raspberry Pi 3
 * 3 or more power supply line for Raspberry Pi
 * 3 or more micro SD Cards

@@ -64,7 +64,8 @@ docker run armhf/hello-world
 ## Disable Swap space to avoid errors in Kubernetes
 
 * [What is swap space?](https://en.wikipedia.org/wiki/Paging#LINUX)
-* [About k8s swap support](https://github.com/kubernetes/kubernetes/issues/53533)
+* [About k8s swap support #53533](https://github.com/kubernetes/kubernetes/issues/53533)
+* [About k8s swap support #7294](https://github.com/kubernetes/kubernetes/issues/7294)
 
 9 - Turn off swap:
 ```
