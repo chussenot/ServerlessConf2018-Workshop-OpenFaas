@@ -2,10 +2,10 @@ ANSIBLE_NOCOWS=1
 ANSIBLE_HOST_KEY_CHECKING=0
 SD_CARD_BOOT_PARTITION:=/dev/mmcblk0p1
 SD_CARD_ROOT_PARTITION:=/dev/mmcblk0p2
-NODE:=slave
+NODE:=worker # worker or master
 NUM:=001
 HOSTNAME:=$(NODE)-$(NUM)
-CLUSTER_NAME:=cluster_001
+CLUSTER_NAME:=default
 
 platform := $(shell uname)
 deps := ansible

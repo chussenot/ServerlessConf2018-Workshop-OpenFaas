@@ -21,9 +21,9 @@ slave-[002:006] ansible_user=pi become=yes become_user=root
 cluster_002_master
 cluster_002_node
 [cluster_002_master]
-master-002 ansible_user=pi become=yes become_user=root
+master-001 ansible_user=pi become=yes become_user=root
 [cluster_002_node]
-slave-[007:012] ansible_user=pi become=yes become_user=root
+slave-[007:011] ansible_user=pi become=yes become_user=root
 
 [cluster_003]
 # cluster group contains two subgroups: master and node

@@ -40,19 +40,43 @@ WIFI_SECONDARY_PASSWORD="password"
 partitions
 * Run `make init`, to configure SSH access and Wifi.
 
-ARM32 Images
-------------
+### Generate a k8s token for you cluster
 
-* [arm32v7](https://hub.docker.com/u/arm32v7/)
-* [arm32v6](https://hub.docker.com/u/arm32v6/)
+First you need name your cluster. If you will work on the same network with other
+guys in this workshop, please choose different names.
 
-Resources
----------
+`export CLUSTER_NAME=St0rm_cluster`
 
-* [How to flash an sd card for raspberry-pi](https://computers.tutsplus.com/articles/how-to-flash-an-sd-card-for-raspberry-pi--mac-53600)
+Now you can generate a token by running once this command,
+
+`make generate_token`
+
+And you will find a `cfg` folder with a `token.yml` file. We will use it later to
+initialize the master k8s node and join it with worker nodes.
+
+### Create your cluster
+
+Ok, now your have to:
+
+* Put each cards on your RasPis.
+* Edit the [`ansible/hosts`](ansible/hosts) file for your CLUSTER_NAME
+* Run the command `make create` with some options
+  * CLUSTER_NAME
+
+Resources, you may find useful
+------------------------------
+
+### Docker
+
 * [Install Docker on Raspian](https://docs.docker.com/install/linux/docker-ce/debian/)
 * [get.docker.com](https://get.docker.com/)
 * [Memory issue](https://docs.docker.com/engine/admin/resource_constraints/#memory)
-* [5 things on docker-rpi by @alexellis](https://blog.alexellis.io/5-things-docker-rpi/)
+* [arm32v7 images](https://hub.docker.com/u/arm32v7/)
+* [arm32v6 images](https://hub.docker.com/u/arm32v6/)
 * [resin.io base image](https://hub.docker.com/r/resin/rpi-raspbian/)
+
+### RasPis
+
+* [How to flash an sd card for raspberry-pi](https://computers.tutsplus.com/articles/how-to-flash-an-sd-card-for-raspberry-pi--mac-53600)
+* [5 things on docker-rpi by @alexellis](https://blog.alexellis.io/5-things-docker-rpi/)
 * [enable cgroup memory](https://github.com/raspberrypi/linux/commit/ba742b52e5099b3ed964e78f227dc96460b5cdc0)
