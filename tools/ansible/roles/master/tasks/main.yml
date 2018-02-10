@@ -1,17 +1,26 @@
 ---
+  
+- name: Read token from file
+  include_vars: cfg/{{ cluster_name }}_token.yml
 
 - set_fact:
     master_ip_address: "{{ master_ip_address_configured }}"
   when: master_ip_address_configured is defined
+  tags:
+    - master
 
 - set_fact:
     master_ip_address: "{{ ansible_default_ipv4['address'] }}"
   when: master_ip_address_configured is not defined
+  tags:
+    - master
 
 - name: Save master_ip_address
-  shell: "echo master_ip_address{{ ':' }} {{ master_ip_address }} > cfg/{{ cluster_name }}/master_ip_address.yml"
+  shell: "echo master_ip_address{{ ':' }} {{ master_ip_address }} > cfg/{{ cluster_name }}_master_ip_address.yml"
   delegate_to: 127.0.0.1
   become: false
+  tags:
+    - master
 
 - name: Copy the master configuration
   template:
@@ -65,7 +74,7 @@
   tags:
     - master
     - network
-    
+
 # Install the k8s dashboard
 - include_tasks: dashboard.yml
 # Clone the faas-netes git repository

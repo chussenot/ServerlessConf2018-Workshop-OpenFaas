@@ -1,5 +1,5 @@
 ---
 
-- include_vars: cfg/{{ cluster_name }}/token.yml
+- include_vars: cfg/{{ cluster_name }}_token.yml
 - set_fact:
     token: '{{ token }}'

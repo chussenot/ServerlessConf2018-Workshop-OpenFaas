@@ -11,9 +11,6 @@
 # (2/3) Initialize your master node
 - hosts: "{{ cluster_name }}_master"
   become: true
-  pre_tasks:
-    - name: Read token from file
-      include_vars: cfg/{{ cluster_name }}/token.yml
   roles:
     - role: master
       tags: [master]

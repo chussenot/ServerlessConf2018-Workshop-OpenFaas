@@ -12,5 +12,5 @@
 
 - name: Save K8s token
   copy:
-    dest: cfg/{{ cluster_name }}/token.yml
+    dest: cfg/{{ cluster_name }}_token.yml
     content: "token: {{ token }}"

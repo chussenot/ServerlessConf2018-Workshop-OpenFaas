@@ -1,8 +1,8 @@
 ---
-  
-- name: stat tokens/cluster_name.yml
+
+- name: stat Tokens
   stat:
-    path:  cfg/{{ cluster_name }}/token.yml
+    path:  cfg/{{ cluster_name }}_token.yml
   register: file
 
 - include_tasks: retrieve.yml
