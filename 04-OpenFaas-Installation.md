@@ -60,15 +60,14 @@ Now you can go ahead and create your first function in Python:
 faas-cli new --lang python http-ping
 ```
 
-Folder: http-ping created.
-Function created in folder: http-ping
-Stack file written: http-ping.yml
 This will create an empty hello-world style function. Let's check it out.
 You'll see that the CLI created three files:
-http-ping.yml
-http-ping/handler.py
-http-ping/requirements.txt
-Edit http-ping.yml and replace image: http-ping with your Docker Hub account like: image: alexellis2/http-ping.
+
+* `http-ping.yml`
+* `http-ping/handler.py`
+* `http-ping/requirements.txt`
+
+Edit `http-ping.yml` and replace `image: http-ping` with your Docker Hub account like: `image: alexellis2/http-ping`.
 Since we are on Kubernetes we also need to edit the gateway port from gateway: http://localhost:8080 to gateway: http://localhost:31112.
 Now let's build, deploy and invoke the function:
 $ faas-cli build -f http-ping.yml

@@ -61,7 +61,10 @@ docker run armhf/hello-world
   https://docs.docker.com/engine/userguide/
 ```
 
-## Disable Swap to avoid errors in Kubernetes
+## Disable Swap space to avoid errors in Kubernetes
+
+* [What is swap space?](https://en.wikipedia.org/wiki/Paging#LINUX)
+* [About k8s swap support](https://github.com/kubernetes/kubernetes/issues/53533)
 
 9 - Turn off swap:
 ```
@@ -84,7 +87,7 @@ Add this text at the end of the line, but don't create any new lines:
 cgroup_enable=cpuset cgroup_memory=1 cgroup_enable=memory
 ```
 
-11 - Now reboot - **do not skip this step**
+11 - Now reboot - **Do not skip this step**
 
 ## Install Kubernetes
 
