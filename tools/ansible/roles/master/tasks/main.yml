@@ -1,5 +1,5 @@
 ---
-  
+
 - name: Read token from file
   include_vars: cfg/{{ cluster_name }}_token.yml
 
@@ -25,31 +25,45 @@
 - name: Copy the master configuration
   template:
     src: kubeadm_conf.yaml.j2
-    dest: /etc/kubernetes/kubeadm_conf.yaml
+    dest: /home/pi/kubeadm_conf.yaml
   tags:
     - master
 
+# https://www.ianlewis.org/en/how-kubeadm-initializes-your-kubernetes-master
 - name: Initialize master
-  command: kubeadm init --token {{ token }} -config /etc/kubernetes/kubeadm_conf.yaml --ignore-preflight-errors --token-ttl=0 --discovery-token-unsafe-skip-ca-verification
-  args:
-    creates: /etc/kubernetes/pki
+  shell: |
+    kubeadm init --config /home/pi/kubeadm_conf.yaml
   register: master_init
   ignore_errors: true
   tags:
     - master
     - init
 
-- name: Copy /etc/kubernetes/admin.conf on master to cfg/cluster_name/admin.conf
+- debug:
+    var: master_init.stdout_lines
+
+- name: Create Kubernetes config directory
+  file: path=/home/pi/.kube/ state=directory
+
+- name: Copy admin.conf to Home directory
+  when: master_init
+  copy:
+    src: "/etc/kubernetes/admin.conf"
+    dest: "/home/pi/.kube/config"
+    owner: pi
+    group: pi
+    mode: 0755
+    remote_src: True
+
+- name: Copy /etc/kubernetes/admin.conf on master to cfg/cluster_name_admin.conf
+  when: master_init
   fetch:
     src: /etc/kubernetes/admin.conf
-    dest: cfg/{{ cluster_name }}/admin.conf
+    dest: cfg/{{ cluster_name }}_admin.conf
     flat: true
   tags:
     - master
     - remote
-
-- name: Copy the conf for the py user
-  command: cp /etc/kubernetes/admin.conf $HOME/ && chown $(id -u):$(id -g) $HOME/admin.conf && export KUBECONFIG=$HOME/admin.conf
 
 # Implements Step 3 of http://kubernetes.io/docs/getting-started-guides/kubeadm/
 # (3/4) Installing a pod network
