@@ -62,6 +62,11 @@
   until: result.stdout.find("Running") != -1
   retries: 30
   delay: 10
-
+  tags:
+    - master
+    - network
+    
+# Install the k8s dashboard
+- include_tasks: dashboard.yml
 # Clone the faas-netes git repository
 - include_tasks: openfaas.yml
