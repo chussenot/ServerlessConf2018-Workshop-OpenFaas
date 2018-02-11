@@ -133,12 +133,14 @@ Other possible parameters:
 * `--ignore-preflight-errors` to bypass prefligth errors.
 
 We pass in `--token-ttl=0` so that the token never expires - do not use this
-setting in production. The UX for `kubeadm` means it's currently very hard
-to get a join token later on after the initial token has expired.
+setting in production.
+
 
 > Optionally also pass `--apiserver-advertise-address=192.168.0.27` with the IP of the Pi.
 
 _Note: This step will take a long time, even up to 15 minutes._
+
+You can generate more tokens with the `kubeadm` [token commands](https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-token/#cmd-token-generate)
 
 After the `init` is complete run the snippet given to you on the command-line:
 
