@@ -15,7 +15,7 @@
   run_once: true
 
 - name: Join nodes to cluster
-  command: kubeadm join --token {{ token }} {{ master_ip_address }}:6443
+  command: kubeadm join --token {{ token }} {{ master_ip_address }}:6443 --discovery-token-unsafe-skip-ca-verification
   args:
     creates: /etc/kubernetes/kubelet.conf # Not 100% sure that the creates clause is correct
   register: worker_join
