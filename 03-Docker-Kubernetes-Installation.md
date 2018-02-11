@@ -299,6 +299,8 @@ To access this from your laptop you will need to use `kubectl proxy`
 and navigate to `http://localhost:8001/` on the master,
 or tunnel to this address with `ssh`.
 
+`ssh -L 8001:localhost:8001 -N pi@master-001`
+
 ## Remove the test deployment
 
 Now on the Kubernetes master remove the test deployment:
