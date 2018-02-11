@@ -1,5 +1,8 @@
 ---
 
+- name: Disable Swap
+  command: swapoff --all && rm -f /var/swap
+
 - name: Disable Swap to avoid errors in Kubernetes
   command: dphys-swapfile swapoff && dphys-swapfile uninstall && update-rc.d dphys-swapfile remove
 
