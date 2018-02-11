@@ -1,1 +1,28 @@
 ---
+
+- name: Read token from file
+  include_vars: cfg/{{ cluster_name }}_token.yml
+
+- name: Read master_ip_address from file
+  include_vars: cfg/{{ cluster_name }}_master_ip_address.yml
+
+- debug:
+    var: token
+  run_once: true
+
+- debug:
+    var: master_ip_address
+  run_once: true
+
+- name: Join nodes to cluster
+  command: kubeadm join --token {{ token }} {{ master_ip_address }}:6443
+  args:
+    creates: /etc/kubernetes/kubelet.conf # Not 100% sure that the creates clause is correct
+  register: worker_join
+  ignore_errors: true
+  tags:
+    - worker
+    - join
+
+- debug:
+    var: worker_join.stdout_lines

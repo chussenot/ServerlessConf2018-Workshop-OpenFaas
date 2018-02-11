@@ -13,4 +13,15 @@
   become: true
   roles:
     - role: master
-      tags: [master]
+      tags:
+        - master
+
+# Implements Step 4 of http://kubernetes.io/docs/getting-started-guides/kubeadm/
+# (3/3) Joining your nodes
+
+- hosts: "{{ cluster_name }}_node"
+  become: true
+  roles:
+    - role: worker
+      tags:
+        - worker

@@ -1,4 +1,9 @@
 ---
+
+# Bootstrap tokens are used for establishing bidirectional trust between a node
+# joining the cluster and a master node 
+# https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-token/#cmd-token-generate
+
 - name: Generate K8s token
   command: python -c 'import random; print "%0x.%0x" % (random.SystemRandom().getrandbits(3*8), random.SystemRandom().getrandbits(8*8))'
   register: token_raw
