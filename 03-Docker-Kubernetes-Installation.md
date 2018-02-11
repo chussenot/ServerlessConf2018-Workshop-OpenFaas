@@ -301,6 +301,8 @@ or tunnel to this address with `ssh`.
 
 `ssh -L 8001:localhost:8001 -N pi@master-001`
 
+[More about dashboard access control](https://github.com/kubernetes/dashboard/wiki/Access-control)
+
 ## Remove the test deployment
 
 Now on the Kubernetes master remove the test deployment:
