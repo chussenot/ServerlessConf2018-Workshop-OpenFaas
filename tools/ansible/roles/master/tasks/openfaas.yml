@@ -1,6 +1,6 @@
 ---
 # https://github.com/openfaas/faas/blob/master/guide/deployment_k8s.md
-- name: Install OpenFaas for k8s
+- name: Clone OpenFaas for k8s
   git:
     repo: https://github.com/openfaas/faas-netes
     dest: faas-netes
@@ -8,3 +8,31 @@
   tags:
     - master
     - openfaas
+
+- name: Install OpenFaas Namespaces
+  command: kubectl --kubeconfig /etc/kubernetes/admin.conf apply -f ./faas-netes/namespaces.yml
+  register: openfaas_ns_raw
+  tags:
+    - master
+    - openfaas
+
+- set_fact:
+    openfass_ns_output: "{{ openfaas_ns_raw.stdout_lines }}"
+
+- debug:
+    var: openfass_ns_output
+  when: openfass_ns_output is defined
+
+- name: Install OpenFaas for ARM
+  command: kubectl --kubeconfig /etc/kubernetes/admin.conf apply -f ./faas-netes/yaml_armhf
+  register: openfaas_arm_raw
+  tags:
+    - master
+    - openfaas
+
+- set_fact:
+    openfass_arm_output: "{{ openfaas_arm_raw.stdout_lines }}"
+
+- debug:
+    var: openfass_arm_output
+  when: openfass_arm_output is defined
