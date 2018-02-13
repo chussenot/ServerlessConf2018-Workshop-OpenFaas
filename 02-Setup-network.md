@@ -6,13 +6,16 @@ Configure the IP address
 
 5 - Check you IP address
 
-In order to connect to your Raspberry Pi from your computer using SSH (or VNC),
+In order to connect to your Raspberry Pi from your computer using SSH,
 you need to know the Pi's IP address.
+
 The easiest way is when you have a display connected:
 
 ```
 hostname -I
 ```
+
+### RPi2 with dongle configuration
 
 Export the name of your favorite EDITOR
 
@@ -20,9 +23,7 @@ Export the name of your favorite EDITOR
 export EDITOR=vim # vim, nano, vi, etc.
 ```
 
-If you need to be root futures steps, just do `sudo -i`
-
-### RPi2 with dongle configuration
+If you need to be root in futures steps, just do `sudo -i`
 
 ```
 sudo $EDITOR /etc/network/interfaces
@@ -75,16 +76,19 @@ Reboot the RPi then check the IP address
 
 ```
 ifconfig wlan0
-hostname -i
+hostname -I
 ```
 
 Without any display,
 
 6 - Change the hostname
-Use the _raspi-config_ utility to change the hostname to `k8s-master-001`
+
+First, you must choose a name for your cluster.
+Then, use the _raspi-config_ utility to change the hostname to `CLUSTER_NAME-master-001`
 or similar and then reboot.
 
 7 - Set a static IP address
+
 It's not fun when your cluster breaks because the IP of your master changed.
 Let's fix that problem ahead of time:
 
@@ -96,7 +100,7 @@ Paste this block:
 
 ```
 profile static_eth0
-static ip_address=192.168.0.100/24
+static ip_address=192.168.0.100
 static routers=192.168.0.1
 static domain_name_servers=8.8.8.8
 ```
@@ -104,7 +108,7 @@ static domain_name_servers=8.8.8.8
 Hit Control + D.
 
 /!\ You should increment static IPs
-100 for 101, 102, 103 etc.
+100 for 101, 102, 103 etc. for all the nodes you will configure.
 
 You may also need to make a reservation on your router's DHCP table so these addresses don't get given out to other devices on your network.
 

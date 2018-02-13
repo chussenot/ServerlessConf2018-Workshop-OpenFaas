@@ -107,3 +107,4 @@ The invocation count is now 2 which is updated live from Prometheus metrics
 ## More can be Done!
 
 * [Configure Prometheus](https://blog.alexellis.io/prometheus-nodeexporter-rpi/)
+* [Sample functions](https://github.com/openfaas/faas/tree/master/sample-functions)

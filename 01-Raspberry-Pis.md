@@ -28,15 +28,13 @@ Without any display, you can easily enable the SSH by adding a file named
   touch $SD_CARD_BOOT_PARTITION/ssh
 ```
 
-With a display
+With a display plug in your RaspPi, execute `sudo raspi-config`
+>> Interfacing Options \ P2 SSH
 
-```
-sudo raspi-config
-```
-
-Interfacing Options \ P2 SSH
 ![image](./images/01-005.jpg)
 
-4 - Download and install [Putty](https://www.putty.org/).
+4 - SSH Access
+
+Download and install [Putty](https://www.putty.org/) for Window users.
 
 -> Go to [Next Chapter](./02-Setup-network.md)
